@@ -1,0 +1,31 @@
+@(announces: List[Announcement], adForm: Form[String])
+
+@import helper._
+
+@main(Messages("title")) {
+  <div class="title">@Messages("table.title")</div>
+
+  <div class="body">
+    @announces.map { ad =>
+      <div class="announcement">
+        <div class="text">
+          <pre>@ad.text</pre>
+        </div>
+        <div class="date">
+          @ad.printDate(Messages("lang"), Messages("dateFormat"))
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="announce">
+    <h2>@Messages("advert.add.title")</h2>
+
+    @form(routes.Application.newAnnouncement) {
+
+      @textarea(adForm("text"), 'rows -> 2, 'cols -> 80)
+
+      <input type="submit" value=@Messages("advert.add.button")>
+    }
+  </div>
+}

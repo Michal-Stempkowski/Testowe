@@ -1,0 +1,13 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Przekierowania na /announces/
+GET     /                           controllers.Application.index
+
+#Strona główna
+GET     /announces/                 controllers.Application.announces
+POST    /announces/                 controllers.Application.newAnnouncement
+
+#Zasoby
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
